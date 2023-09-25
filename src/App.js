@@ -275,7 +275,7 @@ function App() {
           <div className="flex-1">Word</div>
           <div className="flex-none">Score</div>
         </div>
-        {guessed.sort((a, b) => a > b ? 1 : -1).map((g) => (
+        {[...guessed].sort((a, b) => a > b ? 1 : -1).map((g) => (
           <div key={g} className={classnames(
             "w-64 flex", isPangram(g, game.letters) ? "text-pink-500 dark:text-pink-400" : "dark:text-slate-100")}>
             <div className="flex-1">{g}</div>
