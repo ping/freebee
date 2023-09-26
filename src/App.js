@@ -270,12 +270,12 @@ function App() {
   if (showGuessed) {
     return (
       <div className="dark:bg-slate-800 h-screen flex flex-col justify-center items-center">
-        <div className="absolute top-0 right-0 p-8 text-slate-400">
+        <div className="absolute top-0 right-0 p-6 text-slate-400">
           <ParentButton onClick={() => setShowGuessed(false)}>
             <XMarkIcon className="w-10" />
           </ParentButton>
         </div>
-        <div className="w-80 overflow-y-auto px-6 my-6">
+        <div className="w-80 overflow-y-auto px-6 my-16">
           <div className="flex dark:text-slate-100 font-bold">
             <div className="flex-1">Word</div>
             <div className="flex-none">Score</div>
