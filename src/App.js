@@ -1,4 +1,3 @@
-import "./App.css";
 import { useEffect, useRef, useState } from "react";
 
 import { ArrowPathIcon } from "@heroicons/react/20/solid";
@@ -411,7 +410,7 @@ function App() {
           </Button>
           <Button onClick={handleEnter}>Enter</Button>
         </div>
-        <div className="text-sm font-extralight dark:text-white pt-4 space-x-4">
+        <div className="text-sm font-extralight dark:text-white pt-4 space-x-4 flex flex-wrap">
           <input ref={dateInputRef} type="date" className="p-1 border-slate-300 rounded-md border border-1 bg-white dark:text-white dark:bg-slate-800" onChange={handleDateChange} defaultValue={convertDateString(day)} />
           <button onClick={handleRandomClick}>random</button>
           <button className={classnames(day === formatDate(getYesterday()) ? "hidden": "")} onClick={handleYesterdayClick}>yesterday</button>
