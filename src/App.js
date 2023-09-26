@@ -113,7 +113,13 @@ function App() {
     }
     document.location.replace("#" + hashParams.toString());
     fetch(endpoint)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          console.error(res);
+          return;
+        }
+        return res.json();
+      })
       .then(setGame);
   }, [day]);
 
@@ -200,6 +206,9 @@ function App() {
     const today = getToday();
     if (selectedDate > today) {
       return setMessage("Future date");
+    }
+    if (selectedDate < oldestPuzzleDate) {
+      return setMessage("No puzzle available before " + oldestPuzzleDate.toFormat("yyyy.LL.dd"));
     }
     const delta = today - selectedDate;
     if (delta === 0) {
