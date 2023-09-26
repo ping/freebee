@@ -269,22 +269,24 @@ function App() {
 
   if (showGuessed) {
     return (
-      <div className="dark:bg-slate-800 h-screen flex flex-col justify-center items-center overflow-y-auto py-8">
-        <div className="w-64 flex dark:text-slate-100 font-bold mt-10">
-          <div className="flex-1">Word</div>
-          <div className="flex-none">Score</div>
-        </div>
-        {[...guessed].sort((a, b) => a > b ? 1 : -1).map((g) => (
-          <div key={g} className={classnames(
-            "w-64 flex", isPangram(g, game.letters) ? "text-pink-500 dark:text-pink-400" : "dark:text-slate-100")}>
-            <div className="flex-1">{g}</div>
-            <div className="flex-none">{getWordScore(g, game.letters)}</div>
-          </div>
-        ))}
+      <div className="dark:bg-slate-800 h-screen flex flex-col justify-center items-center">
         <div className="absolute top-0 right-0 p-8 text-slate-400">
           <ParentButton onClick={() => setShowGuessed(false)}>
             <XMarkIcon className="w-10" />
           </ParentButton>
+        </div>
+        <div className="w-80 overflow-y-auto px-6 my-6">
+          <div className="flex dark:text-slate-100 font-bold">
+            <div className="flex-1">Word</div>
+            <div className="flex-none">Score</div>
+          </div>
+          {[...guessed].sort((a, b) => a > b ? 1 : -1).map((g) => (
+            <div key={g} className={classnames(
+              "flex", isPangram(g, game.letters) ? "text-pink-500 dark:text-pink-400" : "dark:text-slate-100")}>
+              <div className="flex-1">{g}</div>
+              <div className="flex-none">{getWordScore(g, game.letters)}</div>
+            </div>
+          ))}
         </div>
       </div>
     );
