@@ -89,6 +89,11 @@ const formatDate = (dt) => {
   return dt.toFormat("yyyyLLdd");
 };
 
+const parseDateForMessage = (dateStr) => {
+  const dt = DateTime.fromFormat(dateStr, "yyyyLLdd");
+  return dt.toLocaleString(DateTime.DATE_MED);
+};
+
 const oldestPuzzleDate = DateTime.fromObject({year: 2020, month: 1, day: 1}).setZone(Settings.defaultZoneName).set({hour: 0, minute: 0, second: 0, millisecond: 0})
 const puzzleBase = "https://ping.github.io/freebee-static/puzzles/"
 const hashParams = URLSearchParams && new URLSearchParams(document.location.hash.substring(1));
@@ -107,7 +112,7 @@ function App() {
       if (dateInputRef.current) {
         dateInputRef.current.value = convertDateString(day);
       }
-      setMessage("Puzzle for " + day);
+      setMessage("Puzzle for " + parseDateForMessage(day));
     } else {
       if (dateInputRef.current) {
         dateInputRef.current.value = convertDateString(formatDate(today));
