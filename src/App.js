@@ -389,7 +389,17 @@ function App() {
         >
           +{showingPoints}
         </div>
-        <span className="dark:text-white">{guess}</span>
+        <div className="dark:text-white">
+          {guess.split("").map((a, i) => (
+              <span key={i} className={classnames(
+                  a === game.center ?
+                      "text-pink-500 dark:text-pink-400"
+                      : (game.letters.split("").indexOf(a)) < 0 ? "text-gray-400" : "")
+              }>
+                {a}
+              </span>
+          ))}
+        </div>
         <Caret />
       </div>
       <div
