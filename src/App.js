@@ -264,7 +264,7 @@ function App() {
       if (e.key === "Backspace") return setGuess((prev) => prev.slice(0, -1));
       if (e.key === "Enter") return handleEnter(e);
       if (e.keyCode >= 65 && e.keyCode <= 90) {
-        setGuess((prev) => prev + e.key);
+        setGuess((prev) => prev + e.key.toLowerCase());
       }
     };
     window.addEventListener("keydown", listener);
