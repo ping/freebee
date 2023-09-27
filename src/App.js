@@ -104,10 +104,13 @@ function App() {
     if (day) {
       endpoint = puzzleBase + day + ".json";
       hashParams.set("day", day);
+      if (dateInputRef.current) {
+        dateInputRef.current.value = convertDateString(day);
+      }
       setMessage("Puzzle for " + day);
     } else {
       if (dateInputRef.current) {
-        dateInputRef.current.value = null;
+        dateInputRef.current.value = convertDateString(formatDate(today));
       }
       setMessage("Puzzle for Today");
     }
@@ -422,7 +425,7 @@ function App() {
           <Button onClick={handleEnter}>Enter</Button>
         </div>
         <div className="text-sm font-extralight dark:text-white pt-4 space-x-4 flex flex-wrap justify-center">
-          <input ref={dateInputRef} type="date" className="p-1 border-slate-300 rounded-md border border-1 bg-white dark:text-white dark:bg-slate-800" onChange={handleDateChange} defaultValue={convertDateString(day)} />
+          <input ref={dateInputRef} type="date" className="p-1 border-slate-300 rounded-md border border-1 bg-white dark:text-white dark:bg-slate-800" onChange={handleDateChange} defaultValue={convertDateString(formatDate(getToday()))} />
           <button onClick={handleRandomClick}>random</button>
           <button className={classnames(day === formatDate(getYesterday()) ? "hidden": "")} onClick={handleYesterdayClick}>yesterday</button>
           <button className={classnames(!day || day === formatDate(getToday()) ? "hidden": "")} onClick={handleTodayClick}>today</button>
