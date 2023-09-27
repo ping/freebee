@@ -374,7 +374,7 @@ function App() {
           >
             {level.name}
           </ParentButton>
-          <Example currentLevel={level.level} score={score} />
+          <Progress currentLevel={level.level} score={score} />
         </div>
       </div>
 
@@ -585,9 +585,7 @@ const Polygon = (props) => {
   );
 };
 
-export default App;
-
-function Example(props) {
+const Progress = (props) => {
   const isLast = (stepIdx) =>
     stepIdx === Object.entries(levels).length - 1 ? "flex-1" : "";
   return (
@@ -654,4 +652,6 @@ function Example(props) {
       </ol>
     </nav>
   );
-}
+};
+
+export default App;
