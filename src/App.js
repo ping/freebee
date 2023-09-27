@@ -187,7 +187,8 @@ function App() {
     setTimeout(() => setShowingPoints(0), 400);
   };
 
-  const handleEnter = () => {
+  const handleEnter = (e) => {
+    e.preventDefault();
     setMessage("");
     setGuess("");
     if (guessed.includes(guess)) return setMessage("Already found");
@@ -261,7 +262,7 @@ function App() {
   useEffect(() => {
     const listener = (e) => {
       if (e.key === "Backspace") return setGuess((prev) => prev.slice(0, -1));
-      if (e.key === "Enter") return handleEnter();
+      if (e.key === "Enter") return handleEnter(e);
       if (e.keyCode >= 65 && e.keyCode <= 90) {
         setGuess((prev) => prev + e.key);
       }
