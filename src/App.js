@@ -224,10 +224,6 @@ function App() {
       setDay(null);
       return;
     }
-    if (delta <= (60 * 60 * 24 * 1000)) {
-      setDay("yesterday");
-      return;
-    }
     setDay(formatDate(selectedDate));
   };
 
